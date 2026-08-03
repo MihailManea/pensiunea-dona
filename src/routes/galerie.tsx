@@ -140,15 +140,15 @@ function GalleryPage() {
 
           <figure className="max-h-full w-full max-w-5xl overflow-auto" onClick={(e) => e.stopPropagation()}>
             <img
-              src={photos[index].src}
-              alt={photos[index].alt}
+              src={photos[index]?.src}
+              alt={photos[index]?.alt ?? ""}
               onClick={() => setZoom((z) => !z)}
               className={`mx-auto rounded-xl shadow-lift transition-transform duration-500 ${
                 zoom ? "scale-150 cursor-zoom-out" : "max-h-[80dvh] cursor-zoom-in"
               }`}
             />
             <figcaption className="mt-4 text-center text-sm text-white/85">
-              {photos[index].alt} · {index + 1} / {photos.length} — apasă pe imagine pentru
+              {photos[index]?.alt} · {index + 1} / {photos.length} — apasă pe imagine pentru
               zoom
             </figcaption>
           </figure>
