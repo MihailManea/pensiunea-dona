@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CamereRouteImport } from './routes/camere'
+import { Route as GalerieRouteImport } from './routes/galerie'
+import { Route as PentruCineRouteImport } from './routes/pentru-cine'
+import { Route as RecenziiRouteImport } from './routes/recenzii'
+import { Route as ZonaRouteImport } from './routes/zona'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CamereRoute = CamereRouteImport.update({
+  id: '/camere',
+  path: '/camere',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalerieRoute = GalerieRouteImport.update({
+  id: '/galerie',
+  path: '/galerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PentruCineRoute = PentruCineRouteImport.update({
+  id: '/pentru-cine',
+  path: '/pentru-cine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecenziiRoute = RecenziiRouteImport.update({
+  id: '/recenzii',
+  path: '/recenzii',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZonaRoute = ZonaRouteImport.update({
+  id: '/zona',
+  path: '/zona',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/camere': typeof CamereRoute
+  '/galerie': typeof GalerieRoute
+  '/pentru-cine': typeof PentruCineRoute
+  '/recenzii': typeof RecenziiRoute
+  '/zona': typeof ZonaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/camere': typeof CamereRoute
+  '/galerie': typeof GalerieRoute
+  '/pentru-cine': typeof PentruCineRoute
+  '/recenzii': typeof RecenziiRoute
+  '/zona': typeof ZonaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/camere': typeof CamereRoute
+  '/galerie': typeof GalerieRoute
+  '/pentru-cine': typeof PentruCineRoute
+  '/recenzii': typeof RecenziiRoute
+  '/zona': typeof ZonaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/camere' | '/galerie' | '/pentru-cine' | '/recenzii' | '/zona'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/camere' | '/galerie' | '/pentru-cine' | '/recenzii' | '/zona'
+  id:
+    | '__root__'
+    | '/'
+    | '/camere'
+    | '/galerie'
+    | '/pentru-cine'
+    | '/recenzii'
+    | '/zona'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CamereRoute: typeof CamereRoute
+  GalerieRoute: typeof GalerieRoute
+  PentruCineRoute: typeof PentruCineRoute
+  RecenziiRoute: typeof RecenziiRoute
+  ZonaRoute: typeof ZonaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +106,52 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/camere': {
+      id: '/camere'
+      path: '/camere'
+      fullPath: '/camere'
+      preLoaderRoute: typeof CamereRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galerie': {
+      id: '/galerie'
+      path: '/galerie'
+      fullPath: '/galerie'
+      preLoaderRoute: typeof GalerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pentru-cine': {
+      id: '/pentru-cine'
+      path: '/pentru-cine'
+      fullPath: '/pentru-cine'
+      preLoaderRoute: typeof PentruCineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recenzii': {
+      id: '/recenzii'
+      path: '/recenzii'
+      fullPath: '/recenzii'
+      preLoaderRoute: typeof RecenziiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zona': {
+      id: '/zona'
+      path: '/zona'
+      fullPath: '/zona'
+      preLoaderRoute: typeof ZonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CamereRoute: CamereRoute,
+  GalerieRoute: GalerieRoute,
+  PentruCineRoute: PentruCineRoute,
+  RecenziiRoute: RecenziiRoute,
+  ZonaRoute: ZonaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
