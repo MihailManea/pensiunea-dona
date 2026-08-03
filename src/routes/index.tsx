@@ -112,8 +112,8 @@ function useParallax() {
   return ref;
 }
 
-const CONTACT_EMAIL = "rezervari@pensiuneadona.ro";
-const WHATSAPP_NUMBER = "40731357323";
+const CONTACT_EMAIL = CONTACT.email;
+const WHATSAPP_NUMBER = CONTACT.phoneHref.replace(/\D/g, "");
 
 function formatDate(value: string) {
   if (!value) return "-";
