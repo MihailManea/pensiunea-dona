@@ -112,15 +112,80 @@ function useParallax() {
   return ref;
 }
 
+const CONTACT_EMAIL = "rezervari@pensiuneadona.ro";
+const WHATSAPP_NUMBER = "40731357323";
+
+function formatDate(value: string) {
+  if (!value) return "-";
+  const d = new Date(value);
+  return Number.isNaN(d.getTime())
+    ? value
+    : d.toLocaleDateString("ro-RO", { day: "2-digit", month: "long", year: "numeric" });
+}
+
+function buildRequest(form: HTMLFormElement) {
+  const fd = new FormData(form);
+  const get = (k: string) => String(fd.get(k) ?? "").trim();
+  const nights = (() => {
+    const a = new Date(get("checkin"));
+    const b = new Date(get("checkout"));
+    const diff = Math.round((b.getTime() - a.getTime()) / 86400000);
+    return Number.isFinite(diff) && diff > 0 ? diff : null;
+  })();
+
+  const subject = `Cerere rezervare Pensiunea Dona — ${get("nume")} ${get("prenume")} (${formatDate(get("checkin"))} → ${formatDate(get("checkout"))})`;
+
+  const lines = [
+    "Bună ziua,",
+    "",
+    "Doresc să fac o rezervare la Pensiunea Dona Sinaia:",
+    "",
+    `• Nume: ${get("nume")} ${get("prenume")}`,
+    `• Email: ${get("email")}`,
+    `• Telefon: ${get("telefon")}`,
+    `• Check-in: ${formatDate(get("checkin"))}`,
+    `• Check-out: ${formatDate(get("checkout"))}`,
+    ...(nights ? [`• Nopți: ${nights}`] : []),
+    `• Persoane: ${get("persoane")}`,
+    `• Cameră: ${get("camera")}`,
+    ...(get("mesaj") ? ["", `Mențiuni: ${get("mesaj")}`] : []),
+    "",
+    "Vă rog să îmi confirmați disponibilitatea și tariful total.",
+    "Mulțumesc!",
+  ];
+
+  return { subject, body: lines.join("\n") };
+}
+
 function BookingForm() {
   const [sent, setSent] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const send = (channel: "email" | "whatsapp") => {
+    const form = formRef.current;
+    if (!form) return;
+    if (!form.reportValidity()) return;
+    const { subject, body } = buildRequest(form);
+
+    if (channel === "email") {
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else {
+      window.open(
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(body)}`,
+        "_blank",
+        "noopener,noreferrer",
+      );
+    }
+    setSent(true);
+  };
 
   return (
     <form
+      ref={formRef}
       className="grid gap-5 rounded-3xl border border-border bg-card p-6 shadow-lift sm:p-8"
       onSubmit={(e) => {
         e.preventDefault();
-        setSent(true);
+        send("email");
       }}
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -177,19 +242,28 @@ function BookingForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="h-13 rounded-full bg-primary px-6 py-4 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
-      >
-        Trimite cererea de rezervare
-      </button>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <button
+          type="submit"
+          className="h-13 rounded-full bg-primary px-6 py-4 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+        >
+          Trimite pe email
+        </button>
+        <button
+          type="button"
+          onClick={() => send("whatsapp")}
+          className="h-13 rounded-full border border-primary/30 bg-secondary px-6 py-4 text-sm font-medium text-primary transition-all hover:-translate-y-0.5 hover:shadow-lift"
+        >
+          Trimite pe WhatsApp
+        </button>
+      </div>
 
       <p aria-live="polite" className="text-sm">
         {sent ? (
           <span className="flex items-center gap-2 rounded-xl bg-secondary p-4 text-secondary-foreground">
             <Check className="size-4 shrink-0 text-primary" aria-hidden="true" />
-            Am primit cererea ta. Te contactăm telefonic în mai puțin de 2 ore (8:00–22:00)
-            cu confirmarea disponibilității.
+            Cererea ta este pregătită cu mesajul precompletat — trimite-o din aplicația
+            deschisă. Te contactăm în mai puțin de 2 ore (8:00–22:00).
           </span>
         ) : (
           <span className="text-muted-foreground">
@@ -201,6 +275,7 @@ function BookingForm() {
     </form>
   );
 }
+
 
 function Field({
   id,
