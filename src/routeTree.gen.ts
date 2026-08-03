@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CamereRouteImport } from './routes/camere'
 import { Route as GalerieRouteImport } from './routes/galerie'
+import { Route as RecenziiRouteImport } from './routes/recenzii'
+import { Route as ZonaRouteImport } from './routes/zona'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +30,53 @@ const GalerieRoute = GalerieRouteImport.update({
   path: '/galerie',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecenziiRoute = RecenziiRouteImport.update({
+  id: '/recenzii',
+  path: '/recenzii',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZonaRoute = ZonaRouteImport.update({
+  id: '/zona',
+  path: '/zona',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/camere': typeof CamereRoute
   '/galerie': typeof GalerieRoute
+  '/recenzii': typeof RecenziiRoute
+  '/zona': typeof ZonaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/camere': typeof CamereRoute
   '/galerie': typeof GalerieRoute
+  '/recenzii': typeof RecenziiRoute
+  '/zona': typeof ZonaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/camere': typeof CamereRoute
   '/galerie': typeof GalerieRoute
+  '/recenzii': typeof RecenziiRoute
+  '/zona': typeof ZonaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/camere' | '/galerie'
+  fullPaths: '/' | '/camere' | '/galerie' | '/recenzii' | '/zona'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/camere' | '/galerie'
-  id: '__root__' | '/' | '/camere' | '/galerie'
+  to: '/' | '/camere' | '/galerie' | '/recenzii' | '/zona'
+  id: '__root__' | '/' | '/camere' | '/galerie' | '/recenzii' | '/zona'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CamereRoute: typeof CamereRoute
   GalerieRoute: typeof GalerieRoute
+  RecenziiRoute: typeof RecenziiRoute
+  ZonaRoute: typeof ZonaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +102,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalerieRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recenzii': {
+      id: '/recenzii'
+      path: '/recenzii'
+      fullPath: '/recenzii'
+      preLoaderRoute: typeof RecenziiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zona': {
+      id: '/zona'
+      path: '/zona'
+      fullPath: '/zona'
+      preLoaderRoute: typeof ZonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +123,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CamereRoute: CamereRoute,
   GalerieRoute: GalerieRoute,
+  RecenziiRoute: RecenziiRoute,
+  ZonaRoute: ZonaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
