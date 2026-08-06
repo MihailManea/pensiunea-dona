@@ -157,25 +157,27 @@ function buildRequest(form: HTMLFormElement) {
   return { subject, body: lines.join("\n") };
 }
 
+const WHATSAPP_QUICK_MESSAGE = `Bună ziua! Mă interesează o cazare la Pensiunea Dona din Sinaia și aș dori să primesc mai multe informații pentru a face o rezervare. Mulțumesc!`;
+
 function BookingForm() {
   const [sent, setSent] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const send = (channel: "email" | "whatsapp") => {
+  const sendEmail = () => {
     const form = formRef.current;
     if (!form) return;
     if (!form.reportValidity()) return;
     const { subject, body } = buildRequest(form);
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
 
-    if (channel === "email") {
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    } else {
-      window.open(
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(body)}`,
-        "_blank",
-        "noopener,noreferrer",
-      );
-    }
+  const sendWhatsApp = () => {
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_QUICK_MESSAGE)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
     setSent(true);
   };
 
@@ -185,7 +187,7 @@ function BookingForm() {
       className="grid gap-5 rounded-3xl border border-border bg-card p-6 shadow-lift sm:p-8"
       onSubmit={(e) => {
         e.preventDefault();
-        send("email");
+        sendEmail();
       }}
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -251,10 +253,10 @@ function BookingForm() {
         </button>
         <button
           type="button"
-          onClick={() => send("whatsapp")}
+          onClick={sendWhatsApp}
           className="h-13 rounded-full border border-primary/30 bg-secondary px-6 py-4 text-sm font-medium text-primary transition-all hover:-translate-y-0.5 hover:shadow-lift"
         >
-          Trimite pe WhatsApp
+          Dă mesaj pe WhatsApp
         </button>
       </div>
 
@@ -262,8 +264,8 @@ function BookingForm() {
         {sent ? (
           <span className="flex items-center gap-2 rounded-xl bg-secondary p-4 text-secondary-foreground">
             <Check className="size-4 shrink-0 text-primary" aria-hidden="true" />
-            Cererea ta este pregătită cu mesajul precompletat — trimite-o din aplicația
-            deschisă. Te contactăm în mai puțin de 2 ore (8:00–22:00).
+            Cererea ta este pregătită — trimite-o din aplicația deschisă. Te contactăm în mai
+            puțin de 2 ore (8:00–22:00).
           </span>
         ) : (
           <span className="text-muted-foreground">
