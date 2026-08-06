@@ -234,7 +234,7 @@ function BookingForm() {
             defaultValue="0"
             onChange={(e) => setChildrenCount(Number(e.target.value))}
           >
-            {[0, 1, 2, 3, 4, 5, 6].map((n) => (
+            {Array.from({ length: 21 }, (_, n) => n).map((n) => (
               <option key={n} value={n}>
                 {n} {n === 1 ? "copil" : "copii"}
               </option>
