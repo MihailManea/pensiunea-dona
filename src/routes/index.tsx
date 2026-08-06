@@ -133,6 +133,11 @@ function buildRequest(form: HTMLFormElement) {
     return Number.isFinite(diff) && diff > 0 ? diff : null;
   })();
 
+  const adults = get("adulti");
+  const children = get("copii");
+  const childAges = Array.from({ length: Number(children) || 0 }, (_, i) => get(`varsta-copil-${i + 1}`)).filter(Boolean);
+  const totalPeople = (Number(adults) || 0) + (Number(children) || 0);
+
   const subject = `Cerere rezervare Pensiunea Dona — ${get("nume")} ${get("prenume")} (${formatDate(get("checkin"))} → ${formatDate(get("checkout"))})`;
 
   const lines = [
@@ -146,7 +151,10 @@ function buildRequest(form: HTMLFormElement) {
     `• Check-in: ${formatDate(get("checkin"))}`,
     `• Check-out: ${formatDate(get("checkout"))}`,
     ...(nights ? [`• Nopți: ${nights}`] : []),
-    `• Persoane: ${get("persoane")}`,
+    `• Adulți: ${adults}`,
+    `• Copii: ${children}`,
+    ...(childAges.length ? [`• Vârste copii: ${childAges.join(", ")} ani`] : []),
+    ...(totalPeople ? [`• Total persoane: ${totalPeople}`] : []),
     `• Cameră: ${get("camera")}`,
     ...(get("mesaj") ? ["", `Mențiuni: ${get("mesaj")}`] : []),
     "",
