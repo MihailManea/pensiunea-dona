@@ -274,10 +274,8 @@ function BookingForm() {
             name="camera"
             className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
           >
-            {ROOMS.map((r) => (
-              <option key={r.name}>{r.name}</option>
-            ))}
-            <option>Toată pensiunea (grup)</option>
+            <option>Camera dubla (pat matrimonial)</option>
+            <option>Camera tripla (pat matrimonial - pat de o persoana)</option>
           </select>
         </div>
       </div>
