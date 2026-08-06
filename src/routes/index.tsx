@@ -216,7 +216,7 @@ function BookingForm() {
             className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
             defaultValue="2"
           >
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+            {Array.from({ length: 22 }, (_, n) => n + 1).map((n) => (
               <option key={n} value={n}>
                 {n} {n === 1 ? "adult" : "adulti"}
               </option>
