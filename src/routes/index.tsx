@@ -169,6 +169,7 @@ const WHATSAPP_QUICK_MESSAGE = `Bună ziua! Mă interesează o cazare la Pensiun
 
 function BookingForm() {
   const [sent, setSent] = useState(false);
+  const [childrenCount, setChildrenCount] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const sendEmail = () => {
@@ -206,22 +207,64 @@ function BookingForm() {
         <Field id="checkin" label="Data sosirii" type="date" required />
         <Field id="checkout" label="Data plecării" type="date" required />
         <div>
-          <label htmlFor="persoane" className="text-sm font-medium">
-            Număr de persoane
+          <label htmlFor="adulti" className="text-sm font-medium">
+            Număr adulți
           </label>
           <select
-            id="persoane"
-            name="persoane"
+            id="adulti"
+            name="adulti"
             className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
             defaultValue="2"
           >
-            {[1, 2, 3, 4, 5, 6, 8, 10, 12, 16].map((n) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
               <option key={n} value={n}>
-                {n} {n === 1 ? "persoană" : "persoane"}
+                {n} {n === 1 ? "adult" : "adulti"}
               </option>
             ))}
           </select>
         </div>
+        <div>
+          <label htmlFor="copii" className="text-sm font-medium">
+            Număr copii
+          </label>
+          <select
+            id="copii"
+            name="copii"
+            className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
+            defaultValue="0"
+            onChange={(e) => setChildrenCount(Number(e.target.value))}
+          >
+            {[0, 1, 2, 3, 4, 5, 6].map((n) => (
+              <option key={n} value={n}>
+                {n} {n === 1 ? "copil" : "copii"}
+              </option>
+            ))}
+          </select>
+        </div>
+        {childrenCount > 0 && (
+          <div className="sm:col-span-2">
+            <p className="mb-2 text-sm font-medium">Vârsta copiilor</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {Array.from({ length: childrenCount }, (_, i) => (
+                <div key={i}>
+                  <label htmlFor={`varsta-copil-${i + 1}`} className="text-xs text-muted-foreground">
+                    Copil {i + 1} (ani)
+                  </label>
+                  <input
+                    id={`varsta-copil-${i + 1}`}
+                    name={`varsta-copil-${i + 1}`}
+                    type="number"
+                    min={0}
+                    max={17}
+                    required
+                    placeholder="ex: 7"
+                    className="mt-1 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         <div>
           <label htmlFor="camera" className="text-sm font-medium">
             Tip cameră
