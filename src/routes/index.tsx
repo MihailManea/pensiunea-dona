@@ -19,6 +19,8 @@ import {
   Phone,
   MapPin,
   ArrowRight,
+  Coffee,
+  Droplets,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -79,6 +81,8 @@ const ADVANTAGES = [
   { icon: Flame, label: "Grătar" },
   { icon: TreePine, label: "Foișor" },
   { icon: UtensilsCrossed, label: "Bucătărie" },
+  { icon: Coffee, label: "Cafea din partea casei" },
+  { icon: Droplets, label: "Dozator de apă" },
   { icon: Dog, label: "Animale acceptate" },
   { icon: Baby, label: "Loc de joacă" },
   { icon: Mountain, label: "Natură" },
