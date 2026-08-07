@@ -14,7 +14,6 @@ import {
   Mountain,
   Wind,
   Footprints,
-  Waves,
   Star,
   Check,
   Phone,
@@ -75,12 +74,11 @@ export const Route = createFileRoute("/")({
 });
 
 const ADVANTAGES = [
-  { icon: Wifi, label: "Wi-Fi fibră" },
+  { icon: Wifi, label: "Wi-Fi" },
   { icon: Car, label: "Parcare gratuită" },
   { icon: Flame, label: "Grătar" },
   { icon: TreePine, label: "Foișor" },
   { icon: UtensilsCrossed, label: "Bucătărie" },
-  { icon: Waves, label: "Spa partener" },
   { icon: Dog, label: "Animale acceptate" },
   { icon: Baby, label: "Loc de joacă" },
   { icon: Mountain, label: "Natură" },
@@ -560,7 +558,7 @@ function Home() {
                   "Fără comision de platformă",
                   "Anulare gratuită până la 7 zile înainte",
                   "Mic dejun și parcare incluse",
-                  "Plată cu cardul, transfer sau numerar",
+                  "Transfer sau numerar",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2">
                     <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />

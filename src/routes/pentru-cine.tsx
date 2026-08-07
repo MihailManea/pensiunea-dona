@@ -37,10 +37,6 @@ const FAQ: Array<[string, string]> = [
     "Fibră optică 300 Mbps, cu două access point-uri Wi-Fi 6. Funcționează în camere, în living și în foișor. Poți lucra remote sau ține ședințe video fără probleme.",
   ],
   [
-    "Se poate plăti cu cardul?",
-    "Da: card la sosire (POS), transfer bancar sau numerar. Pentru rezervări în perioadele de vârf cerem un avans de 30%, care se scade din total.",
-  ],
-  [
     "Animalele de companie sunt acceptate?",
     "Da, la cerere, în camerele de la parter. Fără taxă suplimentară pentru animale mici și medii; te rugăm doar să ne anunți la rezervare ca să pregătim camera potrivită.",
   ],
