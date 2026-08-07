@@ -13,6 +13,7 @@ import {
   Mountain,
   Wind,
   Coffee,
+  Droplets,
   Check,
   Users,
 } from "lucide-react";
@@ -43,7 +44,8 @@ const FACILITIES = [
   { icon: Flame, label: "Grătar", note: "Grătar mare, disponibil oaspeților fără cost" },
   { icon: TreePine, label: "Foișor", note: "Acoperit, cu mese pentru până la 16 persoane" },
   { icon: UtensilsCrossed, label: "Bucătărie utilată", note: "Plită, cuptor, frigider, vase" },
-  { icon: Coffee, label: "Mic dejun local", note: "Brânzeturi, miere și pâine de casă" },
+  { icon: Coffee, label: "Cafea din partea casei", note: "Disponibilă gratuit pentru oaspeți" },
+  { icon: Droplets, label: "Dozator de apă", note: "Apă rece/caldă în zona comună" },
   { icon: Baby, label: "Loc de joacă", note: "Leagăne și zonă de iarbă sigură" },
   { icon: Dog, label: "Animale acceptate", note: "La cerere, în camerele de la parter" },
   { icon: Mountain, label: "Drumeții", note: "Trasee marcate la 10 minute de mers" },

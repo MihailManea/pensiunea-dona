@@ -18,7 +18,7 @@ import {
 const FAQ: Array<[string, string]> = [
   [
     "Merită prețul?",
-    "Da, și îți spunem exact de ce: prețul include micul dejun, parcarea în curte, accesul la foișor și grătar, Wi-Fi pe fibră și taxele locale. La un hotel din Sinaia, aceleași servicii ajung cu 25–35% mai scump. În plus, rezervând direct pe site nu plătești comisionul platformelor.",
+    "Da, și îți spunem exact de ce: prețul include micul dejun, parcarea în curte, accesul la foișor și grătar, bucătăria utilată, cafea din partea casei, dozator de apă, Wi-Fi și taxele locale. La un hotel din Sinaia, aceleași servicii ajung cu 25–35% mai scump. În plus, rezervând direct pe site nu plătești comisionul platformelor.",
   ],
   [
     "Este frig iarna?",
