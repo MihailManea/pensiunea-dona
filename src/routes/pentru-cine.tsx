@@ -92,6 +92,8 @@ const FAQ: Array<[string, string]> = [
     "Este potrivit pentru grupuri sau team building?",
     "Da. Se poate închiria integral pensiunea, cu foișor rezervat pentru grup și meniuri organizate la cerere. Am gazduit deja grupuri de 12–16 persoane.",
   ],
+  [
+    "Aveți fumat / spații pentru fumători?",
     "Camerele sunt nefumător. Există o zonă amenajată pentru fumat în curte, lângă foișor.",
   ],
   [
