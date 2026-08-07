@@ -316,10 +316,9 @@ function BookingForm() {
             puțin de 2 ore (8:00–22:00).
           </span>
         ) : (
-          <span className="text-muted-foreground">
-            Rezervarea nu se plătește online. Confirmăm disponibilitatea, apoi alegi metoda
-            de plată.
-          </span>
+            <span className="text-muted-foreground">
+              Rezervarea nu se plătește online. Confirmăm disponibilitatea, apoi alegi metoda de plată: cash, card, card de vacanță sau plată la locație, după cum e convenabil.
+            </span>
         )}
       </p>
     </form>
@@ -558,7 +557,7 @@ function Home() {
                   "Fără comision de platformă",
                   "Anulare gratuită până la 7 zile înainte",
                   "Mic dejun și parcare incluse",
-                  "Transfer sau numerar",
+                  "Cash, card, card de vacanță sau plată la locație",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2">
                     <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
