@@ -50,11 +50,11 @@ const FAQ: Array<[string, string]> = [
   ],
   [
     "Copiii sunt bineveniți?",
-    "Absolut. Avem cameră de familie la mansardă, pătuț la cerere, scaun de masă, loc de joacă în curte și curte închisă, fără acces la stradă.",
+    "Absolut. Avem Camera Triplă, pătuț la cerere, scaun de masă, loc de joacă în curte și curte închisă, fără acces la stradă.",
   ],
   [
     "Există bucătărie pentru oaspeți?",
-    "Da, o bucătărie complet utilată (plită, cuptor, frigider, microunde, vase și tacâmuri). Apartamentul Panoramic are chicinetă proprie.",
+    "Da, o bucătărie complet utilată (plită, cuptor, frigider, microunde, vase și tacâmuri). Apartamentul are chicinetă proprie.",
   ],
   [
     "Există grătar?",
