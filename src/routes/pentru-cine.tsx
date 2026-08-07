@@ -85,9 +85,11 @@ const FAQ: Array<[string, string]> = [
     "Nu. Clădirea este retrasă de la stradă, cu geamuri tripan, iar pereții au izolație fonică. Liniștea este cel mai lăudat aspect în recenzii.",
   ],
   [
-    "Este potrivit pentru grupuri sau team building?",
-    "Da. Se poate închiria integral pensiunea, cu foișor rezervat pentru grup și meniuri organizate la cerere. Am gazduit deja grupuri de 12–16 persoane.",
+    "Cum pot plăti cazarea?",
+    "Acceptăm cash, card, card de vacanță și plată la locație. Rezervarea nu se plătește online — confirmăm disponibilitatea telefonic, apoi alegi metoda care ți se potrivește.",
   ],
+  [
+    "Este potrivit pentru grupuri sau team building?",
   [
     "Aveți fumat / spații pentru fumători?",
     "Camerele sunt nefumător. Există o zonă amenajată pentru fumat în curte, lângă foișor.",
