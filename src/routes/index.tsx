@@ -14,7 +14,6 @@ import {
   Mountain,
   Wind,
   Footprints,
-  Waves,
   Star,
   Check,
   Phone,
