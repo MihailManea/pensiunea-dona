@@ -274,8 +274,9 @@ function BookingForm() {
             name="camera"
             className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
           >
-            <option>Camera dubla (pat matrimonial)</option>
-            <option>Camera tripla (pat matrimonial - pat de o persoana)</option>
+            <option>Camera Dubla</option>
+            <option>Camera Tripla</option>
+            <option>Apartament</option>
           </select>
         </div>
       </div>
