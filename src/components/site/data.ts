@@ -87,12 +87,12 @@ export type Room = {
 
 export const ROOMS: Room[] = [
   {
-    name: "Camera Dublă Deluxe",
+    name: "Camera Dubla",
     image: roomDouble,
     price: "de la 320 lei / noapte",
     capacity: "2 persoane",
     description:
-      "Cameră spațioasă cu pat matrimonial king-size, lenjerie de bumbac egiptean și vedere spre pădurea de conifere. Ideală pentru cupluri.",
+      "Camera cu pat matrimonial, se accepta 2 adulti si 1 copil maxim 10 ani.",
     features: [
       "Pat matrimonial 180×200",
       "Baie proprie cu duș walk-in",
@@ -103,12 +103,12 @@ export const ROOMS: Room[] = [
     ],
   },
   {
-    name: "Camera Familie – Mansardă",
+    name: "Camera Tripla",
     image: roomFamily,
     price: "de la 420 lei / noapte",
-    capacity: "2 adulți + 2 copii",
+    capacity: "2 adulți + 2 copii / 3 adulți + 1 copil",
     description:
-      "Mansardă caldă, îmbrăcată în lemn masiv, cu un pat matrimonial și două paturi single. Perfectă pentru familii cu copii.",
+      "Camera cu pat matrimonial si un pat de o persoana, se accepta 2 adulti si 2 copii / 3 adulti si un copil (copilul sa aib maxim 10 ani).",
     features: [
       "Pat matrimonial + 2 paturi single",
       "Baie proprie cu cadă",
@@ -120,12 +120,12 @@ export const ROOMS: Room[] = [
     ],
   },
   {
-    name: "Apartament Panoramic",
+    name: "Apartament",
     image: roomApartment,
     price: "de la 520 lei / noapte",
-    capacity: "4 persoane",
+    capacity: "5 persoane",
     description:
-      "Apartament cu dormitor separat, zonă de zi și chicinetă complet utilată. Balcon generos cu vedere panoramică spre Bucegi.",
+      "Apartament de 5 locuri, compus din living cu canapea extensibila de 2 persoane, o camera cu pat matrimonial si o camera cu un pat de o persoana.",
     features: [
       "Dormitor separat + canapea extensibilă",
       "Chicinetă utilată (plită, frigider, cafetieră)",
