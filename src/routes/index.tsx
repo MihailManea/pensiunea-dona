@@ -274,8 +274,9 @@ function BookingForm() {
             name="camera"
             className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
           >
-            <option>Camera dubla (pat matrimonial)</option>
-            <option>Camera tripla (pat matrimonial - pat de o persoana)</option>
+            <option>Camera Dubla</option>
+            <option>Camera Tripla</option>
+            <option>Apartament</option>
           </select>
         </div>
       </div>
@@ -435,7 +436,7 @@ function Home() {
             />
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Ce oferim:</strong> trei tipuri de spații —
-              cameră dublă deluxe, cameră de familie la mansardă și apartament panoramic —
+              Camera Dubla, Camera Tripla și Apartament —
               toate cu baie proprie, lenjerie de bumbac, aer condiționat și încălzire cu
               termostat individual. Micul dejun se pregătește în casă, cu brânzeturi, miere și
               pâine din zonă.
