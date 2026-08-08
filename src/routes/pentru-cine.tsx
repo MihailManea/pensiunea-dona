@@ -149,23 +149,19 @@ const AUDIENCES = [
   {
     icon: Heart,
     title: "Cupluri",
-    text: "Cameră dublă deluxe cu vedere la pădure, liniște garantată și micul dejun servit pe terasă.",
+    text: "Cameră dublă cu vedere la pădure, liniște garantată și micul dejun servit pe terasă.",
   },
   {
     icon: Briefcase,
     title: "Grupuri & team building",
-    text: "Se poate închiria integral pensiunea: foișor rezervat, grătar pregătit și meniuri la cerere pentru 12–16 persoane.",
+    text: "Se poate închiria integral pensiunea: foișor rezervat si grătar pregătit.",
   },
   {
     icon: Leaf,
     title: "Iubitori de natură",
     text: "Pădure de conifere la 200 m, trasee marcate la 10 minute de mers și aer curat la 900 m altitudine.",
   },
-  {
-    icon: Bike,
-    title: "Motocicliști",
-    text: "Parcare în curte cu poartă și supraveghere video, loc acoperit pentru moto și cârpe de curățat la dispoziție.",
-  },
+
   {
     icon: Fish,
     title: "Pescari",
