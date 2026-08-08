@@ -39,15 +39,19 @@ jobs:
           rm -rf _site
           mkdir _site
 
-          if [ -d ".output/public" ]; then
-            cp -R .output/public/. _site/
-          else
-            echo "Nu am găsit .output/public"
-            find . -maxdepth 4 -type f \( -name "index.html" -o -name "_shell.html" \)
-            exit 1
-          fi
+               if [ -d ".output/public" ]; then
+        cp -R .output/public/. _site/
 
-          touch _site/.nojekyll
+        if [ -f "_site/_shell.html" ]; then
+          cp "_site/_shell.html" "_site/index.html"
+        fi
+      else
+        echo "Nu am găsit .output/public"
+        find . -maxdepth 4 -type f \( -name "index.html" -o -name "_shell.html" \)
+        exit 1
+      fi
+
+      touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
