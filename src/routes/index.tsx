@@ -320,11 +320,20 @@ function BookingForm() {
             puțin de 2 ore (8:00–22:00).
           </span>
         ) : (
-            <span className="text-muted-foreground">
-              Rezervarea nu se plătește online. Confirmăm disponibilitatea, apoi alegi metoda de plată: cash, card, card de vacanță sau plată la locație, după cum e convenabil.
+          <span className="block space-y-2 text-muted-foreground">
+            <span className="block">
+              Rezervarea nu se plătește online. Confirmăm disponibilitatea, apoi alegi metoda de
+              plată: cash, card, card de vacanță sau plată la locație, după cum e convenabil. În
+              anumite situații se poate solicita plata unui avans în cont, acesta fiind
+              nerambursabil.
             </span>
+            <span className="block text-xs">
+              Tarifele includ TVA, nu includ micul dejun și taxele locale.
+            </span>
+          </span>
         )}
       </p>
+
     </form>
   );
 }
@@ -515,7 +524,7 @@ function Home() {
         <SectionTitle
           eyebrow="Cazare"
           title="Alege spațiul potrivit"
-          subtitle="Prețurile includ micul dejun, parcarea și taxele locale."
+          subtitle="Tarifele includ TVA, nu includ micul dejun și taxele locale."
         />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {ROOMS.map((room, i) => (
@@ -560,8 +569,9 @@ function Home() {
                 {[
                   "Fără comision de platformă",
                   "Anulare gratuită până la 7 zile înainte",
-                  "Mic dejun și parcare incluse",
+                  "Parcare gratuită în curte",
                   "Cash, card, card de vacanță sau plată la locație",
+
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2">
                     <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />

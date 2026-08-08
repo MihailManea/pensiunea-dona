@@ -7,7 +7,7 @@ import {
   Users,
   Briefcase,
   Leaf,
-  Bike,
+  
   Fish,
   Camera,
   Moon,
@@ -18,7 +18,7 @@ import {
 const FAQ: Array<[string, string]> = [
   [
     "Merită prețul?",
-    "Da, și îți spunem exact de ce: prețul include micul dejun, parcarea în curte, accesul la foișor și grătar, bucătăria utilată, cafea din partea casei, dozator de apă, Wi-Fi și taxele locale. La un hotel din Sinaia, aceleași servicii ajung cu 25–35% mai scump. În plus, rezervând direct pe site nu plătești comisionul platformelor.",
+    "Da, și îți spunem exact de ce: tariful include parcarea în curte, accesul la foișor și grătar, bucătăria utilată, cafea din partea casei, dozator de apă și Wi-Fi. Tarifele includ TVA, dar nu includ micul dejun și taxele locale. La un hotel din Sinaia, aceleași servicii ajung cu 25–35% mai scump. În plus, rezervând direct pe site nu plătești comisionul platformelor.",
   ],
   [
     "Este frig iarna?",
@@ -69,8 +69,9 @@ const FAQ: Array<[string, string]> = [
     "Check-in de la 14:00, check-out până la 11:00. Sosirile târzii (după 22:00) sunt acceptate dacă ne anunți — te așteptăm.",
   ],
   [
-    "Micul dejun este inclus?",
-    "Da, în toate tarifele. Se servește între 8:00 și 10:30, cu produse locale: brânzeturi, miere, gem de casă, ouă proaspete, pâine coaptă zilnic. Pentru drumeții pregătim pachet la pachet.",
+    "Micul dejun este inclus în tarif?",
+    "Nu, tarifele includ TVA, dar nu includ micul dejun și taxele locale. Micul dejun se poate solicita separat și se servește între 8:00 și 10:30, cu produse locale: brânzeturi, miere, gem de casă, ouă proaspete, pâine coaptă zilnic.",
+
   ],
   [
     "Se poate anula rezervarea?",
@@ -86,7 +87,7 @@ const FAQ: Array<[string, string]> = [
   ],
   [
     "Cum pot plăti cazarea?",
-    "Acceptăm cash, card, card de vacanță și plată la locație. Rezervarea nu se plătește online — confirmăm disponibilitatea telefonic, apoi alegi metoda care ți se potrivește.",
+    "Acceptăm cash, card, card de vacanță și plată la locație. Rezervarea nu se plătește online — confirmăm disponibilitatea telefonic, apoi alegi metoda care ți se potrivește. În anumite situații se poate solicita plata unui avans în cont, acesta fiind nerambursabil.",
   ],
   [
     "Este potrivit pentru grupuri sau team building?",
@@ -149,23 +150,19 @@ const AUDIENCES = [
   {
     icon: Heart,
     title: "Cupluri",
-    text: "Cameră dublă deluxe cu vedere la pădure, liniște garantată și micul dejun servit pe terasă.",
+    text: "Cameră dublă cu vedere la pădure, liniște garantată și micul dejun servit pe terasă.",
   },
   {
     icon: Briefcase,
     title: "Grupuri & team building",
-    text: "Se poate închiria integral pensiunea: foișor rezervat, grătar pregătit și meniuri la cerere pentru 12–16 persoane.",
+    text: "Se poate închiria integral pensiunea: foișor rezervat si grătar pregătit.",
   },
   {
     icon: Leaf,
     title: "Iubitori de natură",
     text: "Pădure de conifere la 200 m, trasee marcate la 10 minute de mers și aer curat la 900 m altitudine.",
   },
-  {
-    icon: Bike,
-    title: "Motocicliști",
-    text: "Parcare în curte cu poartă și supraveghere video, loc acoperit pentru moto și cârpe de curățat la dispoziție.",
-  },
+
   {
     icon: Fish,
     title: "Pescari",
