@@ -7,7 +7,7 @@ import {
   Users,
   Briefcase,
   Leaf,
-  Bike,
+  
   Fish,
   Camera,
   Moon,
