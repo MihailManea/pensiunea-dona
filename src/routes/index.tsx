@@ -142,12 +142,12 @@ function BookingForm() {
       }}
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="nume" label="Nume" required />
-        <Field id="prenume" label="Prenume" required />
-        <Field id="email" label="Email" type="email" required />
-        <Field id="telefon" label="Telefon" type="tel" required />
-        <Field id="checkin" label="Data sosirii" type="date" required />
-        <Field id="checkout" label="Data plecării" type="date" required />
+        <Field id="nume" label="Nume" />
+        <Field id="prenume" label="Prenume" />
+        <Field id="email" label="Email" />
+        <Field id="telefon" label="Telefon" />
+        <Field id="checkin" label="Data sosirii" type="date" />
+        <Field id="checkout" label="Data plecării" type="date" />
         <div>
           <label htmlFor="adulti" className="text-sm font-medium">
             Număr adulți
@@ -198,7 +198,6 @@ function BookingForm() {
                     type="number"
                     min={0}
                     max={17}
-                    required
                     placeholder="ex: 7"
                     className="mt-1 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
                   />
