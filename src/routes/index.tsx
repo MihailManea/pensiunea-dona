@@ -569,8 +569,9 @@ function Home() {
                 {[
                   "Fără comision de platformă",
                   "Anulare gratuită până la 7 zile înainte",
-                  "Mic dejun și parcare incluse",
+                  "Parcare gratuită în curte",
                   "Cash, card, card de vacanță sau plată la locație",
+
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2">
                     <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
