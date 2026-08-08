@@ -524,7 +524,7 @@ function Home() {
         <SectionTitle
           eyebrow="Cazare"
           title="Alege spațiul potrivit"
-          subtitle="Prețurile includ micul dejun, parcarea și taxele locale."
+          subtitle="Tarifele includ TVA, nu includ micul dejun și taxele locale."
         />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {ROOMS.map((room, i) => (
