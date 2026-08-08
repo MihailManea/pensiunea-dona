@@ -69,8 +69,9 @@ const FAQ: Array<[string, string]> = [
     "Check-in de la 14:00, check-out până la 11:00. Sosirile târzii (după 22:00) sunt acceptate dacă ne anunți — te așteptăm.",
   ],
   [
-    "Micul dejun este inclus?",
-    "Da, în toate tarifele. Se servește între 8:00 și 10:30, cu produse locale: brânzeturi, miere, gem de casă, ouă proaspete, pâine coaptă zilnic. Pentru drumeții pregătim pachet la pachet.",
+    "Micul dejun este inclus în tarif?",
+    "Nu, tarifele includ TVA, dar nu includ micul dejun și taxele locale. Micul dejun se poate solicita separat și se servește între 8:00 și 10:30, cu produse locale: brânzeturi, miere, gem de casă, ouă proaspete, pâine coaptă zilnic.",
+
   ],
   [
     "Se poate anula rezervarea?",
