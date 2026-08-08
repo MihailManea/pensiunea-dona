@@ -5,11 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+  
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
+    id-token: write
 
 concurrency:
   group: pages
@@ -18,16 +18,16 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+   
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
+      - name: Setup Bun 
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-
+          
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
@@ -38,20 +38,13 @@ jobs:
         run: |
           rm -rf _site
           mkdir _site
+          cp -R .output/public/. _site/
 
-               if [ -d ".output/public" ]; then
-        cp -R .output/public/. _site/
+          if [ -f "_site/_shell.html" ]; then
+            cp "_site/_shell.html" "_site/index.html"
+          fi
 
-        if [ -f "_site/_shell.html" ]; then
-          cp "_site/_shell.html" "_site/index.html"
-        fi
-      else
-        echo "Nu am găsit .output/public"
-        find . -maxdepth 4 -type f \( -name "index.html" -o -name "_shell.html" \)
-        exit 1
-      fi
-
-      touch _site/.nojekyll
+          touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -59,14 +52,14 @@ jobs:
           path: _site
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      needs: build
+      runs-on: ubuntu-latest
+  
+      environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    
+      steps:
+       - name: Deploy to Github Pages
+         id: deployment
+         uses: actions/deploy-pages@v4
