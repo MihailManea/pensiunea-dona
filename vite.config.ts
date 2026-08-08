@@ -9,6 +9,7 @@ import { nitro } from "nitro/vite";
 
 export default defineConfig({
   vite: {
+    base: "/pensiunea-dona/",
     plugins: [
       nitro({
         preset: "node-server",
