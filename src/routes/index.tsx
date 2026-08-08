@@ -114,58 +114,7 @@ function useParallax() {
   return ref;
 }
 
-const CONTACT_EMAIL = CONTACT.email;
 const WHATSAPP_NUMBER = CONTACT.phoneHref.replace(/\D/g, "");
-
-function formatDate(value: string) {
-  if (!value) return "-";
-  const d = new Date(value);
-  return Number.isNaN(d.getTime())
-    ? value
-    : d.toLocaleDateString("ro-RO", { day: "2-digit", month: "long", year: "numeric" });
-}
-
-function buildRequest(form: HTMLFormElement) {
-  const fd = new FormData(form);
-  const get = (k: string) => String(fd.get(k) ?? "").trim();
-  const nights = (() => {
-    const a = new Date(get("checkin"));
-    const b = new Date(get("checkout"));
-    const diff = Math.round((b.getTime() - a.getTime()) / 86400000);
-    return Number.isFinite(diff) && diff > 0 ? diff : null;
-  })();
-
-  const adults = get("adulti");
-  const children = get("copii");
-  const childAges = Array.from({ length: Number(children) || 0 }, (_, i) => get(`varsta-copil-${i + 1}`)).filter(Boolean);
-  const totalPeople = (Number(adults) || 0) + (Number(children) || 0);
-
-  const subject = `Cerere rezervare Pensiunea Dona — ${get("nume")} ${get("prenume")} (${formatDate(get("checkin"))} → ${formatDate(get("checkout"))})`;
-
-  const lines = [
-    "Bună ziua,",
-    "",
-    "Doresc să fac o rezervare la Pensiunea Dona Sinaia:",
-    "",
-    `• Nume: ${get("nume")} ${get("prenume")}`,
-    `• Email: ${get("email")}`,
-    `• Telefon: ${get("telefon")}`,
-    `• Check-in: ${formatDate(get("checkin"))}`,
-    `• Check-out: ${formatDate(get("checkout"))}`,
-    ...(nights ? [`• Nopți: ${nights}`] : []),
-    `• Adulți: ${adults}`,
-    `• Copii: ${children}`,
-    ...(childAges.length ? [`• Vârste copii: ${childAges.join(", ")} ani`] : []),
-    ...(totalPeople ? [`• Total persoane: ${totalPeople}`] : []),
-    `• Cameră: ${get("camera")}`,
-    ...(get("mesaj") ? ["", `Mențiuni: ${get("mesaj")}`] : []),
-    "",
-    "Vă rog să îmi confirmați disponibilitatea și tariful total.",
-    "Mulțumesc!",
-  ];
-
-  return { subject, body: lines.join("\n") };
-}
 
 const WHATSAPP_QUICK_MESSAGE = `Bună ziua! Mă interesează o cazare la Pensiunea Dona din Sinaia și aș dori să primesc mai multe informații pentru a face o rezervare. Mulțumesc!`;
 
@@ -173,15 +122,6 @@ function BookingForm() {
   const [sent, setSent] = useState(false);
   const [childrenCount, setChildrenCount] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
-
-  const sendEmail = () => {
-    const form = formRef.current;
-    if (!form) return;
-    if (!form.reportValidity()) return;
-    const { subject, body } = buildRequest(form);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
-  };
 
   const sendWhatsApp = () => {
     window.open(
@@ -198,7 +138,7 @@ function BookingForm() {
       className="grid gap-5 rounded-3xl border border-border bg-card p-6 shadow-lift sm:p-8"
       onSubmit={(e) => {
         e.preventDefault();
-        sendEmail();
+        sendWhatsApp();
       }}
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -296,21 +236,12 @@ function BookingForm() {
         />
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
-        <button
-          type="submit"
-          className="h-13 rounded-full bg-primary px-6 py-4 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
-        >
-          Trimite pe email
-        </button>
-        <button
-          type="button"
-          onClick={sendWhatsApp}
-          className="h-13 rounded-full border border-primary/30 bg-secondary px-6 py-4 text-sm font-medium text-primary transition-all hover:-translate-y-0.5 hover:shadow-lift"
-        >
-          Dă mesaj pe WhatsApp
-        </button>
-      </div>
+      <button
+        type="submit"
+        className="h-13 rounded-full bg-primary px-6 py-4 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+      >
+        Dă mesaj pe WhatsApp
+      </button>
 
       <p aria-live="polite" className="text-sm">
         {sent ? (
