@@ -87,7 +87,7 @@ const FAQ: Array<[string, string]> = [
   ],
   [
     "Cum pot plăti cazarea?",
-    "Acceptăm cash, card, card de vacanță și plată la locație. Rezervarea nu se plătește online — confirmăm disponibilitatea telefonic, apoi alegi metoda care ți se potrivește.",
+    "Acceptăm cash, card, card de vacanță și plată la locație. Rezervarea nu se plătește online — confirmăm disponibilitatea telefonic, apoi alegi metoda care ți se potrivește. În anumite situații se poate solicita plata unui avans în cont, acesta fiind nerambursabil.",
   ],
   [
     "Este potrivit pentru grupuri sau team building?",
