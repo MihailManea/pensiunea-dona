@@ -320,11 +320,20 @@ function BookingForm() {
             puțin de 2 ore (8:00–22:00).
           </span>
         ) : (
-            <span className="text-muted-foreground">
-              Rezervarea nu se plătește online. Confirmăm disponibilitatea, apoi alegi metoda de plată: cash, card, card de vacanță sau plată la locație, după cum e convenabil.
+          <span className="block space-y-2 text-muted-foreground">
+            <span className="block">
+              Rezervarea nu se plătește online. Confirmăm disponibilitatea, apoi alegi metoda de
+              plată: cash, card, card de vacanță sau plată la locație, după cum e convenabil. În
+              anumite situații se poate solicita plata unui avans în cont, acesta fiind
+              nerambursabil.
             </span>
+            <span className="block text-xs">
+              Tarifele includ TVA, nu includ micul dejun și taxele locale.
+            </span>
+          </span>
         )}
       </p>
+
     </form>
   );
 }
