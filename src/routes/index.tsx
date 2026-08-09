@@ -305,10 +305,10 @@ function Home() {
       <section className="relative flex min-h-dvh items-center overflow-hidden">
         <div ref={parallaxRef} className="absolute inset-0 will-change-transform">
           <img
-            src={IMG.hero}
-            alt="Pensiunea Dona din Sinaia la apus, cu munții Bucegi în fundal"
-            width={1920}
-            height={1088}
+            src={heroPhoto.url}
+            alt="Fațada Pensiunii Dona din Sinaia, cu parcare în curte și flori"
+            width={1456}
+            height={1092}
             fetchPriority="high"
             decoding="async"
             className="size-full object-cover"
