@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { SectionTitle, SiteLayout, CONTACT } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { IMG, ROOMS } from "@/components/site/data";
+import heroPhoto from "@/assets/pensiunea-dona-fatada.png.asset.json";
 import {
   Wifi,
   Car,
