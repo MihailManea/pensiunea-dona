@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { SectionTitle, SiteLayout, CONTACT } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { IMG, ROOMS } from "@/components/site/data";
-import heroPhoto from "@/assets/pensiunea-dona-fatada.jpg.asset.json";
+import heroPhoto from "@/assets/hero.jpg";
 import {
   Wifi,
   Car,
@@ -306,7 +306,7 @@ function Home() {
       <section className="relative flex min-h-dvh items-center overflow-hidden">
         <div ref={parallaxRef} className="absolute inset-0 will-change-transform">
           <img
-            src={heroPhoto.url}
+            src={heroPhoto}
             alt="Fațada Pensiunii Dona din Sinaia, cu parcare în curte și flori"
             width={1456}
             height={1092}
