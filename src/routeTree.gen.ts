@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CamereRouteImport } from './routes/camere'
 import { Route as GalerieRouteImport } from './routes/galerie'
+import { Route as PensiuneaDonaRouteImport } from './routes/pensiunea-dona'
 import { Route as PentruCineRouteImport } from './routes/pentru-cine'
 import { Route as RecenziiRouteImport } from './routes/recenzii'
 import { Route as ZonaRouteImport } from './routes/zona'
@@ -29,6 +30,11 @@ const CamereRoute = CamereRouteImport.update({
 const GalerieRoute = GalerieRouteImport.update({
   id: '/galerie',
   path: '/galerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PensiuneaDonaRoute = PensiuneaDonaRouteImport.update({
+  id: '/pensiunea-dona',
+  path: '/pensiunea-dona',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PentruCineRoute = PentruCineRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/camere': typeof CamereRoute
   '/galerie': typeof GalerieRoute
+  '/pensiunea-dona': typeof PensiuneaDonaRoute
   '/pentru-cine': typeof PentruCineRoute
   '/recenzii': typeof RecenziiRoute
   '/zona': typeof ZonaRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/camere': typeof CamereRoute
   '/galerie': typeof GalerieRoute
+  '/pensiunea-dona': typeof PensiuneaDonaRoute
   '/pentru-cine': typeof PentruCineRoute
   '/recenzii': typeof RecenziiRoute
   '/zona': typeof ZonaRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/camere': typeof CamereRoute
   '/galerie': typeof GalerieRoute
+  '/pensiunea-dona': typeof PensiuneaDonaRoute
   '/pentru-cine': typeof PentruCineRoute
   '/recenzii': typeof RecenziiRoute
   '/zona': typeof ZonaRoute
@@ -75,14 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/camere' | '/galerie' | '/pentru-cine' | '/recenzii' | '/zona'
+    | '/'
+    | '/camere'
+    | '/galerie'
+    | '/pensiunea-dona'
+    | '/pentru-cine'
+    | '/recenzii'
+    | '/zona'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/camere' | '/galerie' | '/pentru-cine' | '/recenzii' | '/zona'
+  to:
+    | '/'
+    | '/camere'
+    | '/galerie'
+    | '/pensiunea-dona'
+    | '/pentru-cine'
+    | '/recenzii'
+    | '/zona'
   id:
     | '__root__'
     | '/'
     | '/camere'
     | '/galerie'
+    | '/pensiunea-dona'
     | '/pentru-cine'
     | '/recenzii'
     | '/zona'
@@ -92,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CamereRoute: typeof CamereRoute
   GalerieRoute: typeof GalerieRoute
+  PensiuneaDonaRoute: typeof PensiuneaDonaRoute
   PentruCineRoute: typeof PentruCineRoute
   RecenziiRoute: typeof RecenziiRoute
   ZonaRoute: typeof ZonaRoute
@@ -118,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/galerie'
       fullPath: '/galerie'
       preLoaderRoute: typeof GalerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pensiunea-dona': {
+      id: '/pensiunea-dona'
+      path: '/pensiunea-dona'
+      fullPath: '/pensiunea-dona'
+      preLoaderRoute: typeof PensiuneaDonaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pentru-cine': {
@@ -148,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CamereRoute: CamereRoute,
   GalerieRoute: GalerieRoute,
+  PensiuneaDonaRoute: PensiuneaDonaRoute,
   PentruCineRoute: PentruCineRoute,
   RecenziiRoute: RecenziiRoute,
   ZonaRoute: ZonaRoute,
@@ -155,13 +187,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
