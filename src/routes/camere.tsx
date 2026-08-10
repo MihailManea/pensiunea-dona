@@ -60,7 +60,7 @@ function RoomsPage() {
       <PageHeader
         eyebrow="Camere & facilități"
         title="Trei tipuri de spații, un singur standard: impecabil"
-        intro="Fiecare cameră are baie proprie, lenjerie de bumbac, curățenie verificată de două ori și dotări complete. Prețurile includ taxele locale și micul dejun."
+        intro="Fiecare cameră are baie proprie, lenjerie de bumbac, curățenie verificată de două ori și dotări complete: încălzire centrală, TV, mini-frigider, uscător de păr și Wi-Fi gratuit."
       />
 
       <section className="mx-auto max-w-7xl space-y-14 px-4 py-16 sm:px-6">
