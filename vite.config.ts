@@ -11,7 +11,7 @@ import { nitro } from "nitro/vite";
 // În Lovable / local rămâne "/", deci preview-ul funcționează normal.
 export default defineConfig({
   vite: { 
-    base: process.env["BASE_PATH"] || "/",
+    base: "/pensiunea-dona/",
     plugins: [
       nitro({
         preset: "node-server",
