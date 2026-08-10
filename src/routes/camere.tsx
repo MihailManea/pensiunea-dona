@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader, SectionTitle, SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { ROOMS } from "@/components/site/data";
+import { RoomsConfig } from "@/components/site/RoomsConfig";
+
 import {
   Wifi,
   Car,
@@ -58,7 +60,7 @@ function RoomsPage() {
       <PageHeader
         eyebrow="Camere & facilități"
         title="Trei tipuri de spații, un singur standard: impecabil"
-        intro="Fiecare cameră are baie proprie, lenjerie de bumbac, curățenie verificată de două ori și dotări complete. Prețurile includ taxele locale și micul dejun."
+        intro="Fiecare cameră are baie proprie, lenjerie de bumbac, curățenie verificată de două ori și dotări complete: încălzire centrală, TV, mini-frigider, uscător de păr și Wi-Fi gratuit."
       />
 
       <section className="mx-auto max-w-7xl space-y-14 px-4 py-16 sm:px-6">
@@ -115,6 +117,9 @@ function RoomsPage() {
           </Reveal>
         ))}
       </section>
+
+      <RoomsConfig />
+
 
       <section className="bg-secondary/40 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
