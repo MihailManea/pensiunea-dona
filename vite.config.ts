@@ -9,6 +9,15 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // BASE_PATH este setat doar în GitHub Actions (ex: /pensiunea-dona/).
 // În Lovable / local rămâne "/", deci preview-ul funcționează normal.
 export default defineConfig({
-  vite: { base: process.env["BASE_PATH"] || "/" },
+  vite: { 
+    base: process.env["BASE_PATH"] || "/",
+},
+  
+tanstackStart: {
+  server: { entry: "server" },
+  spa: {
+    enabled: true,
+   },
+  },
 });
 
