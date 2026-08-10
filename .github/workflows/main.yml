@@ -32,6 +32,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build
+        env:
+          BASE_PATH: /pensiunea-dona/
         run: bun run build
 
       - name: Prepare static site
@@ -42,6 +44,10 @@ jobs:
 
           if [ -f "_site/_shell.html" ]; then
             cp "_site/_shell.html" "_site/index.html"
+          fi
+
+          if [ -f "_site/index.html" ]; then
+            cp "_site/index.html" "_site/404.html"
           fi
 
           touch _site/.nojekyll
