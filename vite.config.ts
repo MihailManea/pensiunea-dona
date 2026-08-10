@@ -5,16 +5,23 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { nitro } from "nitro/vite";
 
 // BASE_PATH este setat doar în GitHub Actions (ex: /pensiunea-dona/).
 // În Lovable / local rămâne "/", deci preview-ul funcționează normal.
 export default defineConfig({
   vite: { 
     base: process.env["BASE_PATH"] || "/",
+    plugins: [
+      nitro({
+        preset: "node-server",
+      ]),
+    ],
 },
   
 tanstackStart: {
   server: { entry: "server" },
+  
   spa: {
     enabled: true,
    },
