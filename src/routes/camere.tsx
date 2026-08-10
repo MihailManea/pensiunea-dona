@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader, SectionTitle, SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { ROOMS } from "@/components/site/data";
+import { RoomsConfig } from "@/components/site/RoomsConfig";
+
 import {
   Wifi,
   Car,
