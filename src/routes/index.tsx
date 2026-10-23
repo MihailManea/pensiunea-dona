@@ -378,7 +378,7 @@ function Home() {
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Ce oferim:</strong> trei tipuri de spații —
               Camera Dubla, Camera Tripla și Apartament —
-              toate cu baie proprie, lenjerie de bumbac, aer condiționat și încălzire cu
+              toate cu baie proprie, lenjerie de bumbac și încălzire cu
               termostat individual. Micul dejun se pregătește în casă, cu brânzeturi, miere și
               pâine din zonă.
             </p>
