@@ -50,7 +50,7 @@ const FAQ: Array<[string, string]> = [
   ],
   [
     "Există bucătărie pentru oaspeți?",
-    "Da, o bucătărie complet utilată (plită, cuptor, frigider, microunde, vase și tacâmuri). Apartamentul are chicinetă proprie.",
+    "Da, o bucătărie complet utilată (plită, cuptor, frigider, microunde, vase și tacâmuri).",
   ],
   [
     "Există grătar?",
