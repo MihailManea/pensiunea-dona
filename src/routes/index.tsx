@@ -124,6 +124,11 @@ function BookingForm() {
   const [childrenCount, setChildrenCount] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(
+    now.getDate(),
+  ).padStart(2, "0")}`;
+
   const sendWhatsApp = () => {
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_QUICK_MESSAGE)}`,
