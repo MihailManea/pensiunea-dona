@@ -275,11 +275,13 @@ function Field({
   label,
   type = "text",
   required,
+  min,
 }: {
   id: string;
   label: string;
   type?: string;
   required?: boolean;
+  min?: string;
 }) {
   return (
     <div>
@@ -291,6 +293,7 @@ function Field({
         name={id}
         type={type}
         required={required}
+        min={min}
         className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
       />
     </div>
