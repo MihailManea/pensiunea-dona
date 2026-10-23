@@ -124,6 +124,11 @@ function BookingForm() {
   const [childrenCount, setChildrenCount] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(
+    now.getDate(),
+  ).padStart(2, "0")}`;
+
   const sendWhatsApp = () => {
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_QUICK_MESSAGE)}`,
@@ -147,8 +152,8 @@ function BookingForm() {
         <Field id="prenume" label="Prenume" />
         <Field id="email" label="Email" />
         <Field id="telefon" label="Telefon" />
-        <Field id="checkin" label="Data sosirii" type="date" />
-        <Field id="checkout" label="Data plecării" type="date" />
+        <Field id="checkin" label="Data sosirii" type="date" min={todayStr} />
+        <Field id="checkout" label="Data plecării" type="date" min={todayStr} />
         <div>
           <label htmlFor="adulti" className="text-sm font-medium">
             Număr adulți
@@ -275,11 +280,13 @@ function Field({
   label,
   type = "text",
   required,
+  min,
 }: {
   id: string;
   label: string;
   type?: string;
   required?: boolean;
+  min?: string;
 }) {
   return (
     <div>
@@ -291,6 +298,7 @@ function Field({
         name={id}
         type={type}
         required={required}
+        min={min}
         className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-4 text-sm"
       />
     </div>
