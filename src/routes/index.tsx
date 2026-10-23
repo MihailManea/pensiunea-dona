@@ -148,7 +148,7 @@ function BookingForm() {
         <Field id="email" label="Email" />
         <Field id="telefon" label="Telefon" />
         <Field id="checkin" label="Data sosirii" type="date" min={todayStr} />
-        <Field id="checkin2" name="checkout" label="Data plecării" type="date" min={todayStr} hidden />
+        <Field id="checkout" label="Data plecării" type="date" min={todayStr} />
         <div>
           <label htmlFor="adulti" className="text-sm font-medium">
             Număr adulți
