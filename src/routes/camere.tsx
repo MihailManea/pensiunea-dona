@@ -41,7 +41,7 @@ export const Route = createFileRoute("/camere")({
 });
 
 const FACILITIES = [
-  { icon: Wifi, label: "Wi-Fi fibră 300 Mbps", note: "În toate camerele și spațiile comune" },
+  { icon: Wifi, label: "Wi-Fi", note: "În toate camerele și spațiile comune" },
   { icon: Car, label: "Parcare gratuită", note: "În curte, cu poartă, supravegheată video" },
   { icon: Flame, label: "Grătar", note: "Grătar mare, disponibil oaspeților fără cost" },
   { icon: TreePine, label: "Foișor", note: "Acoperit, cu mese pentru până la 16 persoane" },
@@ -120,15 +120,24 @@ function RoomsPage() {
                   </h3>
                   <ul className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                     {room.units.map((u) => (
-                      <li key={u.name} className="group overflow-hidden rounded-2xl border border-border bg-background">
-                        <img
-                          src={u.image}
-                          alt={`${room.name} – ${u.name}`}
-                          loading="lazy"
-                          decoding="async"
-                          className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <p className="px-3 py-2 text-sm font-medium">{u.name}</p>
+                      <li key={u.slug}>
+                        <Link
+                          to="/camere/$unit"
+                          params={{ unit: u.slug }}
+                          className="group block overflow-hidden rounded-2xl border border-border bg-background transition-shadow hover:shadow-lift"
+                          aria-label={`Vezi fotografiile pentru ${u.name}`}
+                        >
+                          <img
+                            src={u.images[0]}
+                            alt={`${room.name} – ${u.name}`}
+                            loading="lazy"
+                            decoding="async"
+                            className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <p className="px-3 py-2 text-sm font-medium transition-colors group-hover:text-primary">
+                            {u.name}
+                          </p>
+                        </Link>
                       </li>
                     ))}
                   </ul>
