@@ -16,6 +16,7 @@ import { Route as PensiuneaDonaRouteImport } from './routes/pensiunea-dona'
 import { Route as PentruCineRouteImport } from './routes/pentru-cine'
 import { Route as RecenziiRouteImport } from './routes/recenzii'
 import { Route as ZonaRouteImport } from './routes/zona'
+import { Route as CamereUnitRouteImport } from './routes/camere_.$unit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,11 @@ const ZonaRoute = ZonaRouteImport.update({
   path: '/zona',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CamereUnitRoute = CamereUnitRouteImport.update({
+  id: '/camere_/$unit',
+  path: '/camere/$unit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/pentru-cine': typeof PentruCineRoute
   '/recenzii': typeof RecenziiRoute
   '/zona': typeof ZonaRoute
+  '/camere/$unit': typeof CamereUnitRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/pentru-cine': typeof PentruCineRoute
   '/recenzii': typeof RecenziiRoute
   '/zona': typeof ZonaRoute
+  '/camere/$unit': typeof CamereUnitRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/pentru-cine': typeof PentruCineRoute
   '/recenzii': typeof RecenziiRoute
   '/zona': typeof ZonaRoute
+  '/camere_/$unit': typeof CamereUnitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/pentru-cine'
     | '/recenzii'
     | '/zona'
+    | '/camere/$unit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/pentru-cine'
     | '/recenzii'
     | '/zona'
+    | '/camere/$unit'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/pentru-cine'
     | '/recenzii'
     | '/zona'
+    | '/camere_/$unit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   PentruCineRoute: typeof PentruCineRoute
   RecenziiRoute: typeof RecenziiRoute
   ZonaRoute: typeof ZonaRoute
+  CamereUnitRoute: typeof CamereUnitRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZonaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/camere_/$unit': {
+      id: '/camere_/$unit'
+      path: '/camere/$unit'
+      fullPath: '/camere/$unit'
+      preLoaderRoute: typeof CamereUnitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   PentruCineRoute: PentruCineRoute,
   RecenziiRoute: RecenziiRoute,
   ZonaRoute: ZonaRoute,
+  CamereUnitRoute: CamereUnitRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
