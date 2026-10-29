@@ -83,6 +83,8 @@ export type Room = {
   capacity: string;
   description: string;
   features: string[];
+  /** Camerele individuale de acest tip — fiecare cu poza ei. */
+  units: { name: string; image: string }[];
 };
 
 export const ROOMS: Room[] = [
@@ -101,6 +103,7 @@ export const ROOMS: Room[] = [
       "Încălzire în pardoseală",
       "Vedere la munte",
     ],
+    units: [1, 2, 3, 4, 5].map((n) => ({ name: `Camera ${n}`, image: roomDouble })),
   },
   {
     name: "Camera Tripla",
@@ -117,6 +120,7 @@ export const ROOMS: Room[] = [
       "Wi-Fi fibră 300 Mbps",
       "Vedere la pădure",
     ],
+    units: [1, 2].map((n) => ({ name: `Camera tripla ${n}`, image: roomFamily })),
   },
   {
     name: "Apartament",
@@ -130,5 +134,6 @@ export const ROOMS: Room[] = [
       "Baie proprie cu marmură",
       "Televizor",
     ],
+    units: [],
   },
 ];

@@ -113,6 +113,27 @@ function RoomsPage() {
                   </Link>
                 </div>
               </div>
+              {room.units.length > 0 && (
+                <div className="px-2 pb-4 lg:col-span-2 lg:px-6">
+                  <h3 className="font-display text-lg text-primary">
+                    Fotografii pentru fiecare cameră
+                  </h3>
+                  <ul className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                    {room.units.map((u) => (
+                      <li key={u.name} className="group overflow-hidden rounded-2xl border border-border bg-background">
+                        <img
+                          src={u.image}
+                          alt={`${room.name} – ${u.name}`}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <p className="px-3 py-2 text-sm font-medium">{u.name}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </Reveal>
         ))}
