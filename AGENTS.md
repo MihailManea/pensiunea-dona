@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- GitHub Pages builds must set `BASE_PATH` to the repository subpath and verify generated asset URLs before uploading; Lovable and local previews keep the root base so both hosts resolve assets and router paths correctly.
