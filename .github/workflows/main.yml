@@ -32,6 +32,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build
+        env:
+          BASE_PATH: /pensiunea-dona/
         run: bun run build
 
       - name: Prepare static site
@@ -49,6 +51,24 @@ jobs:
           fi
 
           touch _site/.nojekyll
+
+      - name: Verify GitHub Pages asset paths
+        run: |
+          bun -e '
+            const html = await Bun.file("_site/index.html").text();
+            const urls = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
+              .map((match) => match[1])
+              .filter((url) => url.includes("/assets/"));
+            if (urls.length === 0) throw new Error("No application assets found in index.html");
+            for (const url of urls) {
+              if (!url.startsWith("/pensiunea-dona/assets/")) {
+                throw new Error(`Incorrect GitHub Pages asset path: ${url}`);
+              }
+              const file = `_site/${url.slice("/pensiunea-dona/".length).split(/[?#]/)[0]}`;
+              if (!(await Bun.file(file).exists())) throw new Error(`Missing asset: ${file}`);
+            }
+            console.log(`Verified ${urls.length} GitHub Pages asset paths`);
+          '
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
