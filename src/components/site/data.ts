@@ -83,9 +83,26 @@ export type Room = {
   capacity: string;
   description: string;
   features: string[];
-  /** Camerele individuale de acest tip — fiecare cu poza ei. */
-  units: { name: string; image: string }[];
+  /** Camerele individuale de acest tip — fiecare cu pagina și pozele ei. */
+  units: RoomUnit[];
 };
+
+export type RoomUnit = {
+  /** Identificator folosit în adresa paginii camerei (ex. /camere/dubla-1). */
+  slug: string;
+  name: string;
+  /** Pozele camerei — adaugă aici câte imagini vrei pentru fiecare cameră. */
+  images: string[];
+};
+
+/** Găsește o cameră individuală după slug, împreună cu tipul ei de cameră. */
+export function findUnit(slug: string): { room: Room; unit: RoomUnit } | undefined {
+  for (const room of ROOMS) {
+    const unit = room.units.find((u) => u.slug === slug);
+    if (unit) return { room, unit };
+  }
+  return undefined;
+}
 
 export const ROOMS: Room[] = [
   {
@@ -99,11 +116,14 @@ export const ROOMS: Room[] = [
       "Pat matrimonial 180×200",
       "Baie proprie cu duș walk-in",
       "Televizor",
-      "Wi-Fi fibră 300 Mbps",
+      "Wi-Fi",
       "Încălzire în pardoseală",
-      "Vedere la munte",
     ],
-    units: [1, 2, 3, 4, 5].map((n) => ({ name: `Camera ${n}`, image: roomDouble })),
+    units: [1, 2, 3, 4, 5].map((n) => ({
+      slug: `dubla-${n}`,
+      name: `Camera ${n}`,
+      images: [roomDouble],
+    })),
   },
   {
     name: "Camera Tripla",
@@ -115,12 +135,14 @@ export const ROOMS: Room[] = [
     features: [
       "Pat matrimonial + 2 paturi single",
       "Baie proprie cu cadă",
-      "Balcon propriu",
       "Televizor",
-      "Wi-Fi fibră 300 Mbps",
-      "Vedere la pădure",
+      "Wi-Fi",
     ],
-    units: [1, 2].map((n) => ({ name: `Camera tripla ${n}`, image: roomFamily })),
+    units: [1, 2].map((n) => ({
+      slug: `tripla-${n}`,
+      name: `Camera tripla ${n}`,
+      images: [roomFamily],
+    })),
   },
   {
     name: "Apartament",
