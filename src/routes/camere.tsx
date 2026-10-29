@@ -27,7 +27,7 @@ export const Route = createFileRoute("/camere")({
       {
         name: "description",
         content:
-          "Camere duble, cameră triplă și apartament în Sinaia. Baie proprie, balcon, televizor, Wi-Fi. Prețuri transparente.",
+          "Camere duble, cameră triplă și apartament în Sinaia. Baie proprie, televizor, Wi-Fi. Prețuri transparente.",
       },
       { property: "og:title", content: "Camere și facilități – Pensiunea Dona Sinaia" },
       {
