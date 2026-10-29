@@ -4,7 +4,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { findUnit } from "@/components/site/data";
 import { ArrowLeft, Check, Users } from "lucide-react";
 
-export const Route = createFileRoute("/camere/$unit")({
+export const Route = createFileRoute("/camere_/$unit")({
   loader: ({ params }) => {
     const found = findUnit(params.unit);
     if (!found) throw notFound();
