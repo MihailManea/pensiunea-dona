@@ -114,7 +114,7 @@ function RoomsPage() {
                 </div>
               </div>
               {room.units.length > 0 && (
-                <div className="px-2 pb-4 lg:col-span-2 lg:px-6">
+                <div className="px-2 pb-4 lg:order-last lg:col-span-2 lg:px-6">
                   <h3 className="font-display text-lg text-primary">
                     Fotografii pentru fiecare cameră
                   </h3>
