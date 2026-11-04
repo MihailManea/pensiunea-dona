@@ -4,6 +4,8 @@ import { SectionTitle, SiteLayout, CONTACT } from "@/components/site/SiteLayout"
 import { Reveal } from "@/components/site/Reveal";
 import { IMG, ROOMS } from "@/components/site/data";
 import heroPhoto from "@/assets/hero-new.jpg.png";
+import { DateField } from "@/components/site/DateField";
+import { addDays } from "date-fns";
 import {
   Wifi,
   Car,
@@ -124,10 +126,9 @@ function BookingForm() {
   const [childrenCount, setChildrenCount] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
+  const [checkin, setCheckin] = useState<Date | undefined>();
+  const [checkout, setCheckout] = useState<Date | undefined>();
   const now = new Date();
-  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(
-    now.getDate(),
-  ).padStart(2, "0")}`;
 
   const formatDate = (value: string) => {
     const [y, m, d] = value.split("-");
@@ -182,8 +183,23 @@ function BookingForm() {
         <Field id="prenume" label="Prenume" />
         <Field id="email" label="Email" />
         <Field id="telefon" label="Telefon" />
-        <Field id="checkin" label="Data sosirii" type="date" min={todayStr} />
-        <Field id="checkout" label="Data plecării" type="date" min={todayStr} />
+        <DateField
+          id="checkin"
+          label="Data sosirii"
+          value={checkin}
+          minDate={now}
+          onChange={(d) => {
+            setCheckin(d);
+            if (d && checkout && checkout <= d) setCheckout(undefined);
+          }}
+        />
+        <DateField
+          id="checkout"
+          label="Data plecării"
+          value={checkout}
+          minDate={checkin ? addDays(checkin, 1) : now}
+          onChange={setCheckout}
+        />
         <div>
           <label htmlFor="adulti" className="text-sm font-medium">
             Număr adulți
