@@ -129,9 +129,39 @@ function BookingForm() {
     now.getDate(),
   ).padStart(2, "0")}`;
 
+  const formatDate = (value: string) => {
+    const [y, m, d] = value.split("-");
+    return y && m && d ? `${d}.${m}.${y}` : value;
+  };
+
+  const buildMessage = () => {
+    const form = formRef.current;
+    if (!form) return WHATSAPP_QUICK_MESSAGE;
+    const data = new FormData(form);
+    const get = (key: string) => String(data.get(key) ?? "").trim();
+
+    const lines: string[] = [WHATSAPP_QUICK_MESSAGE, ""];
+    const fullName = [get("prenume"), get("nume")].filter(Boolean).join(" ");
+    if (fullName) lines.push(`Nume: ${fullName}`);
+    if (get("email")) lines.push(`Email: ${get("email")}`);
+    if (get("telefon")) lines.push(`Telefon: ${get("telefon")}`);
+    if (get("checkin")) lines.push(`Data sosirii: ${formatDate(get("checkin"))}`);
+    if (get("checkout")) lines.push(`Data plecării: ${formatDate(get("checkout"))}`);
+    if (get("adulti")) lines.push(`Număr adulți: ${get("adulti")}`);
+    const kids = Number(get("copii") || 0);
+    lines.push(`Număr copii: ${kids}`);
+    if (kids > 0) {
+      const ages = Array.from({ length: kids }, (_, i) => get(`varsta-copil-${i + 1}`) || "?");
+      lines.push(`Vârsta copiilor: ${ages.join(", ")} ani`);
+    }
+    if (get("camera")) lines.push(`Tip cameră: ${get("camera")}`);
+    if (get("mesaj")) lines.push(`Mesaj: ${get("mesaj")}`);
+    return lines.join("\n");
+  };
+
   const sendWhatsApp = () => {
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_QUICK_MESSAGE)}`,
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`,
       "_blank",
       "noopener,noreferrer",
     );
