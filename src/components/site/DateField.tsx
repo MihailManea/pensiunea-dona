@@ -20,7 +20,7 @@ export function DateField({
 }: {
   id: string;
   label: string;
-  value?: Date;
+  value: Date | undefined;
   onChange: (d: Date | undefined) => void;
   minDate: Date;
 }) {
