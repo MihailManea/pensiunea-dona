@@ -156,6 +156,6 @@ export const ROOMS: Room[] = [
       "Baie proprie cu marmură",
       "Televizor",
     ],
-    units: [{ slug: "apartament", name: "Poze", images: [roomApartment] }],
+    units: [{ slug: "apartament", name: "Apartament", images: [roomApartment] }],
   },
 ];
